@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>XiaoYu&#39;Blog</title>
+  <subtitle>胆小认生，不易相处</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yumaster.net/"/>
+  <updated>2017-07-02T09:50:42.161Z</updated>
+  <id>http://yumaster.net/</id>
+  
+  <author>
+    <name>Zhang Yu·坏人</name>
+    <email>yumaster@yeah.net</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yumaster.net/2017/07/01/hello-world/"/>
+    <id>http://yumaster.net/2017/07/01/hello-world/</id>
+    <published>2017-06-30T17:39:00.000Z</published>
+    <updated>2017-07-02T09:50:42.161Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/assets/blogImg/diary-16.jpg" alt=""></p>
+<p>在两天的折腾下，这个博客终于搭建起来了。</p>
+<p>折腾了两天多，看到自己的博客加载下来时，突然有种错综复杂的恍惚感。是的，它不是qq空间，不是新浪博客，不是豆瓣小站，也不是贴吧。它更像是属于自己的一块小小的领地，因而我满足于这种归属感。我愿在上面安静劳作。</p>
+<p>一个农民，通过自身努力终于分到了一块地，不再需要在地主的土地上创造流量价值时，于是翻身作主的他可以宣告说：Hello World。当然这个农民确切来说是个码农。</p>
+<p>我很喜欢这种色调。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/assets/blogImg/diary-16.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在两天的折腾下，这个博客终于搭建起来了。&lt;/p&gt;
+&lt;p&gt;折腾了两天多，看到自己的博客加载下来时，突然有种错综复杂的恍惚感。是的，它不是qq空间，不是新浪博客，不是豆
+    
+    </summary>
+    
+    
+      <category term="杂谈" scheme="http://yumaster.net/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
+  
+</feed>
