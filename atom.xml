@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yumaster.net/"/>
-  <updated>2017-07-02T09:50:42.161Z</updated>
+  <updated>2017-07-05T05:42:12.911Z</updated>
   <id>http://yumaster.net/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用不着洒脱，才是最大的洒脱</title>
+    <link href="http://yumaster.net/2017/07/05/diary-2017-0705/"/>
+    <id>http://yumaster.net/2017/07/05/diary-2017-0705/</id>
+    <published>2017-07-05T05:37:00.000Z</published>
+    <updated>2017-07-05T05:42:12.911Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/assets/blogImg/diary-7.jpg" alt=""></p>
+<hr>
+<p>我喜欢那种，经行语言（而不是光影）就能渲染出来的，边陲小镇特有的青翠与市侩。</p>
+<p>人们总是要用“说走就走”来标榜旅行，<br>貌似有了它，才多了一份洒脱。<br>但于我说，这样经常是迫不得已，<br>如果能够，我喜欢一个词，叫“蓄谋已久”。</p>
+<p>我可以精心准备，旅行如约而至。<br>仿佛是一位尊贵的客人，<br>出现在那个预期的，天朗气清的时分。<br>这说明，你的生活总掌握在自己的手里。</p>
+<p>用不着洒脱，才是最大的洒脱。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/assets/blogImg/diary-7.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我喜欢那种，经行语言（而不是光影）就能渲染出来的，边陲小镇特有的青翠与市侩。&lt;/p&gt;
+&lt;p&gt;人们总是要用“说走就走”来标榜旅行，&lt;br&gt;貌似有了它，才多了一
+    
+    </summary>
+    
+    
+      <category term="旧事" scheme="http://yumaster.net/tags/%E6%97%A7%E4%BA%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
