@@ -48,7 +48,7 @@
                     //账号
                     this.name = uuid.setDv(ops.name || pns[1], 'yumaster');
                     //仓库
-                    this.repos = uuid.setDv(ops.repos || pns[2], 'tags');
+                    this.repos = uuid.setDv(ops.repos || pns[2], 'yumaster.github.io');
                     //包
                     this.libs = uuid.setDv(ops.libs || pns[3], 'libs');
 
