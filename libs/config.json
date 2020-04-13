@@ -5,7 +5,7 @@
   "theme": {
 
     "# background-image": "背景图片",
-    "background-image": "http://yumaster.net/Content/image/1.gif"
+    "background-image": "https://yumaster.net/Upload/img/mini_env.jpg"
   },
 
   "# searchapi": "搜索引擎，默认百度，谷歌：https://www.google.com/search?q=",
