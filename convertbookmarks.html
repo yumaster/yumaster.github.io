@@ -67,7 +67,7 @@
 
                 require(['vs/editor/editor.main'], function () {
 
-                    window.nmd = new netnrmd('#editor');
+                    window.nmd = new markdown('#editor');
 
                     $(window).on('load resize', function () {
                         var vh = $(window).height() - nmd.obj.container.offset().top - 10;
