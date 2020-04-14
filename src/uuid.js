@@ -652,7 +652,7 @@
     //默认的图标
     uuid.defaultFavicon = "/src/net.svg";
     //默认源仓库
-    uuid.defaultRepos = "/netnr/uuid";
+    uuid.defaultRepos = "/yumaster/yumaster.github.io";
     //默认配置文件
     uuid.defaultConfig = "config.json";
     //默认搜索
