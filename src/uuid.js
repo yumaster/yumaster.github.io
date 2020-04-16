@@ -262,7 +262,7 @@
             var sh = document.createElement("input");
             sh.className = "form-control form-control-sm";
             sh.style.width = "55%";
-            sh.placeholder = "搜索，支持静默搜索";
+            sh.placeholder = "搜索，支持静默全局搜索";
             sh.oninput = function () {
                 var key = this.value.toLowerCase();
                 var cb = that.id.getElementsByClassName('card-body');
