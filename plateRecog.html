@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta name="keywords" content="车牌识别API测试" />
+		<title>车牌识别</title>
+		<style type="text/css">
+			#text_open_camera{
+				width: 100%;
+				padding-top: 35px;
+				text-align: center;
+			}
+
+            #label_open_camera {
+                bottom: 20px;
+                width: 90px;
+                height: 90px;
+                opacity: 0.5;
+                border-radius: 50%;
+                position: fixed;
+                left: calc(50% - 50px);
+                left: -moz-calc(50% - 50px);
+                left: -webkit-calc(50% - 50px);
+                background-color: #7af3e3;
+            }
+
+			.overlay {
+				top: 0px;
+				left: 0px;
+				z-index: 10001;
+				display:none;
+				position: absolute;
+				filter:alpha(opacity=60);
+				background-color: #777;
+				opacity: 0.5;
+				-moz-opacity: 0.5;
+				width: 1000px;
+				height: 1000px;
+				justify-content:center;
+				align-items:center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="overlay" class="overlay">带宽有限，正在处理中...</div>
+		<canvas id="canvas" height="0px" width="0px"></canvas>
+		<label id="label_open_camera">
+			<div id="text_open_camera">开启摄像头</div>
+			<input style="display: none" type="file" title="开启摄像头" value="拍照识别" id="capture" accept="image/*" capture="camera" onchange="fun_camera_picture(this)">
+		</label>
+
+		<script>
+			//数据处理
+			function fun_camera_picture(){
+				const input = document.getElementById("capture");
+				const fReader = new FileReader();
+				fReader.readAsDataURL(input.files[0]);
+				fReader.onloadend = function(event){
+					let upload_image_width = 512;
+					const image_base64 = event.target.result;
+					show_result("canvas", image_base64, 1, null);
+					compress(image_base64, upload_image_width, function(compress_base64, scale){
+						post_image_data(compress_base64.substring(compress_base64.indexOf(",")+1), function(xhr){
+							if(xhr.status === 200) {
+								const response = JSON.parse(xhr.responseText);
+								show_result("canvas", image_base64, scale, response);
+							}
+						});
+					});
+				};
+			}
+
+			//压缩数据
+			function compress(image_base64, dist_width, cb) {
+				const img = new Image();
+				img.src = image_base64;
+				img.onload = function() {
+					let scale = 1.0;
+					if(img.naturalWidth >= dist_width){
+						scale = dist_width / img.naturalWidth;
+					}
+					const canvas = document.createElement('canvas');
+					let ctx = canvas.getContext('2d');
+					canvas.width = img.naturalWidth * scale;
+					canvas.height = img.naturalHeight * scale;
+					ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+					const image_base64 = canvas.toDataURL( 'image/jpeg', 1 );
+					cb(image_base64, scale);
+				}
+			}
+
+			//显示结果
+			function show_result(canvas_name, image_base64, scale, response) {
+				const tempImg = new Image();
+				tempImg.src = image_base64;
+				tempImg.onload = function() {
+					let canvas = document.getElementById(canvas_name);
+					let ctx = canvas.getContext('2d');
+					//原始图像的缩放比例
+					let windows_width = document.body.offsetWidth;
+					let image_scale = windows_width / tempImg.naturalWidth;
+					//添加图像
+					canvas.width = tempImg.naturalWidth * image_scale;
+					canvas.height = tempImg.naturalHeight * image_scale;
+					ctx.drawImage(tempImg, 0, 0, canvas.width, canvas.height);
+					//绘制检测结果
+					if(response && response["data"] && response["data"].length > 0){
+						const res_scale = image_scale / scale;
+						response['data'].forEach(item => {
+							if(item && item['location']){
+								//计算绘制的矩形框
+								const location = item['location'];
+								ctx.beginPath();
+								ctx.moveTo(location.leftTop.x * res_scale, location.leftTop.y * res_scale);
+								ctx.lineTo(location.rightTop.x * res_scale, location.rightTop.y * res_scale);
+								ctx.lineTo(location.rightBottom.x * res_scale, location.rightBottom.y * res_scale);
+								ctx.lineTo(location.leftBottom.x * res_scale, location.leftBottom.y * res_scale);
+								ctx.closePath();
+								ctx.lineWidth = 2;
+								ctx.strokeStyle = "red";
+								ctx.stroke();
+								//绘制匹配到的结果
+								if(item['recognition']){
+									const top_x = location.leftTop.x * res_scale
+									const top_y = location.leftTop.y * res_scale
+									const top_w = (location.rightTop.x - location.leftTop.x) * res_scale
+									//样式数据
+									let min_font = Math.min(Math.max(12, Math.floor(top_w/5.5)), 50);
+									ctx.fillStyle = 'red';
+									ctx.font = "bold " + min_font + "px 'Fira Sans'";
+									//写入数据
+									const recognition = item['recognition'];
+									if(top_y - 1.80 * min_font >= 0){
+										ctx.fillText(recognition['plateNo'], top_x, top_y - 1.80 * min_font);
+										ctx.fillText(format_plate_layout_color(recognition['layout'], recognition['plateColor']), top_x, top_y - 0.50 * min_font);
+									}else{
+										ctx.fillText(recognition['plateNo'], top_x, 0.90 * min_font);
+										ctx.fillText(format_plate_layout_color(recognition['layout'], recognition['plateColor']), top_x, 1.90 * min_font);
+									}
+								}
+							}
+						});
+					}else if(response){
+						ctx.lineWidth = 2;
+						ctx.strokeStyle="red";
+						ctx.strokeRect(canvas.width/2-80, canvas.height/2 - 35, 150, 60);
+						ctx.fillStyle = 'red';
+						ctx.font = "bold 18px 'Fira Sans'";
+						ctx.fillText("未检测到车牌", canvas.width/2-60, canvas.height/2);
+					}
+				};
+			}
+
+			//请求后台的数据
+			function post_image_data(base64, cb) {
+				//const url = "./plate/recognition";
+				const url="http://ipc.sv1.k9s.run:2271/visual/plate/recognition"
+				const post_data = {"imageBase64": base64};
+				let post_body = JSON.stringify(post_data);
+				let xhr = new XMLHttpRequest();
+				xhr.open('POST', url, true);
+				xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+				xhr.send(post_body);
+				show_overlay();
+				xhr.onload = function () {
+					close_overlay();
+					cb(xhr)
+				}
+			}
+
+			function show_overlay() {
+				const overlay = document.getElementById("overlay");
+				overlay.style.width = window.outerWidth+'px';
+				overlay.style.height = window.outerHeight+'px';
+				overlay.style.display = "flex";
+			}
+
+			function close_overlay() {
+				const overlay = document.getElementById("overlay");
+				overlay.style.display = "none";
+			}
+
+			function format_plate_layout_color(layout, color){
+				let _layout = "未知"
+				if('SINGLE' === layout){
+					_layout = "单排"
+				}else if('DOUBLE' === layout){
+					_layout = "双排"
+				}
+				let _color = "未知"
+				if('BLACK' === color){
+					_color = "黑色"
+				}else if('BLUE' === color){
+					_color = "蓝色"
+				}else if('GREEN' === color){
+					_color = "绿色"
+				}else if('WHITE' === color){
+					_color = "白色"
+				}else if('YELLOW' === color){
+					_color = "黄色"
+				}
+				return _layout + " : " + _color;
+			}
+		</script>
+</body></html>
