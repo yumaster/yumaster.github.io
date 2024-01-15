@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var license = "MIT License";
-    var github = "https://github.com/MskTmi/MBTI";
+    var github = "https://github.com/yumaster";
     var disclaimer = "This project is for learning and reference only, and does not bear any responsibility.";
     console.group("Project Information");
 
