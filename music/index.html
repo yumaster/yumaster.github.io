@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="HTML5VisualizationPlayer">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML5 可视化音乐播放器</title>
+        <link type="text/css" rel="stylesheet" href="css/main.css">
+        <link type="text/css" rel="stylesheet" href="css/player.css">
+        <link rel="Shortcut Icon" href="images/icon.png">
+        <script src="js/player.js" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <div class="play-box">
+            <player></player>
+            <div class="player-tips"></div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        var player = new Player();
+        player.init({
+            autoPlay: true,//自动播放
+            effect: 0,//频谱效果,不设置或0为随机变化,1为条形柱状,2为环状声波,3 心电图效果
+            color: null,//颜色 color:16进制颜色代码,不设置或设置为空(空字符或null)将随机使用默认颜色
+            button: {//设置生成的控制按钮,不设置button默认全部创建
+                prev: true,//上一首
+                play: true,//播放,暂停
+                next: true,//下一首
+                volume: true,//音量
+                progressControl: true,//是否开启进度控制
+            },
+            event: function (e) {
+                //这是一个事件方法,点击控制按钮会到此方法
+                //参数:e.eventType 事件类型
+                //参数:e.describe 事件详情,或参数
+                //e.eventType  prev: 点击上一首,next：点击下一首,play:点击 播放/暂停
+                console.log(e);
+            },
+            energy: function (value) {
+                //此时播放的能量值,时刻变化
+                //console.log(value);
+            },
+            playList: [//播放列表
+                {
+                    title: "爱我的人和我爱的人",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/爱我的人和我爱的人.m4a",//音乐路径
+                },
+                {
+                    title: "半句再见",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/半句再见.m4a",//音乐路径
+                },
+                {
+                    title: "孤独的总和",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/孤独的总和.m4a",//音乐路径
+                },
+                {
+                    title: "海盗船长他是个混蛋",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/海盗船长他是个混蛋.m4a",//音乐路径
+                },
+                {
+                    title: "经过",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/经过.m4a",//音乐路径
+                },
+                {
+                    title: "刻在我心底的名字",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/刻在我心底的名字.m4a",//音乐路径
+                },
+                {
+                    title: "霾",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/霾.m4a",//音乐路径
+                },
+                {
+                    title: "陌生人",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/陌生人.m4a",//音乐路径
+                },
+                {
+                    title: "那么喜欢你",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/那么喜欢你.m4a",//音乐路径
+                },
+                {
+                    title: "你必须在一个荒唐的夜，骑着摩托穿过下雨的街",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/你必须在一个荒唐的夜，骑着摩托穿过下雨的街.m4a",//音乐路径
+                },
+                {
+                    title: "你不爱我我就爱别人",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/你不爱我我就爱别人.m4a",//音乐路径
+                },
+                {
+                    title: "逆流时光",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/逆流时光.m4a",//音乐路径
+                },
+                {
+                    title: "匿名的好友",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/匿名的好友.m4a",//音乐路径
+                },
+                {
+                    title: "暖场嘉宾",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/暖场嘉宾.m4a",//音乐路径
+                },
+                {
+                    title: "千年泪",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/千年泪.m4a",//音乐路径
+                },
+                {
+                    title: "去有风的地方",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/去有风的地方.m4a",//音乐路径
+                },
+                {
+                    title: "热一爱情",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/热一爱情.m4a",//音乐路径
+                },
+                {
+                    title: "如果爱下去",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/如果爱下去.m4a",//音乐路径
+                },
+                {
+                    title: "如果我变成回忆",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/如果我变成回忆.m4a",//音乐路径
+                },
+                {
+                    title: "如果这都不算爱",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/如果这都不算爱.m4a",//音乐路径
+                },
+                {
+                    title: "十万毫升泪水",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/十万毫升泪水.m4a",//音乐路径
+                },
+                {
+                    title: "听人说",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/听人说.m4a",//音乐路径
+                },
+                {
+                    title: "停格",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/停格.m4a",//音乐路径
+                },
+                {
+                    title: "王招君",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/王招君.m4a",//音乐路径
+                },
+                {
+                    title: "忘记拥抱",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/忘记拥抱.m4a",//音乐路径
+                },
+                {
+                    title: "兄妹",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/兄妹.m4a",//音乐路径
+                },
+                {
+                    title: "一个",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/一个.m4a",//音乐路径
+                },
+                {
+                    title: "一生能爱几个人",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/一生能爱几个人.m4a",//音乐路径
+                },
+                {
+                    title: "勇气",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/勇气.m4a",//音乐路径
+                },
+                {
+                    title: "最重要的决定",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/最重要的决定.m4a",//音乐路径
+                },
+                {
+                    title: "左边",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/左边.m4a",//音乐路径
+                },
+                {
+                    title: "单身旅记",//音乐标题
+                    album: "Confused",//所属专辑
+                    artist: "Loser",//艺术家
+                    mp3: "music/单身旅记.mp3",//音乐路径
+                },
+            ]
+        });
+    </script>
+
+</html>
