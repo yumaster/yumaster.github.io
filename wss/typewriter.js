@@ -7,7 +7,6 @@ str+='<br>从此以后，我再也没有你了，想到这里我就像不能呼�
 str+='<br>谢谢你，让我经常在梦里遇见你，我不想走出去，也走不出去.</br>';
 str+='<br>可我接受不了爱情的不完美，我不知道你懂不懂这句话的意思.</br>';
 str+='<br>.</br>';
-str+='<br>.</br>';
 str+='<br>时间就停留在最初相遇的时候就好.</br>';
 str+='<br>如果可以，我想知道你的正确答案是谁.</br>';
 str+='<br>.</br>';
@@ -26,7 +25,7 @@ var attention = document.getElementById('attention');
 var timer = document.getElementById('timer');
 var initOpacity = 0.0;
 
-word.style.marginTop = 10+'px'; //document.documentElement.clientHeight / 3 + 'px';
+word.style.marginTop = 50+'px'; //document.documentElement.clientHeight / 3 + 'px';
 word.style.marginLeft =50+'px'; 
 
 wordBackground.style.marginTop =5+'px'; //document.documentElement.clientHeight / 3 - 5 + 'px';

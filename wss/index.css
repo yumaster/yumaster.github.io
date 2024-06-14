@@ -25,7 +25,7 @@ body{
 	position: absolute;
 	z-index: 0;
 	width: 90%;
-	height: 80%;
+	height: 90%;
 
 	border: 2px solid #ff9ea4;
 	border-radius: 14px;
@@ -39,7 +39,7 @@ body{
 	z-index: 1;
 
 	width: 90%;
-	line-height: 40px;
+	line-height: 35px;
 }
 #wish{
 	position: absolute;
