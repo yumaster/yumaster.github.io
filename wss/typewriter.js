@@ -25,10 +25,10 @@ var attention = document.getElementById('attention');
 var timer = document.getElementById('timer');
 var initOpacity = 0.0;
 
-word.style.marginTop = 50+'px'; //document.documentElement.clientHeight / 3 + 'px';
+word.style.marginTop = 100+'px'; //document.documentElement.clientHeight / 3 + 'px';
 word.style.marginLeft =50+'px'; 
 
-wordBackground.style.marginTop =5+'px'; //document.documentElement.clientHeight / 3 - 5 + 'px';
+wordBackground.style.marginTop =45+'px'; //document.documentElement.clientHeight / 3 - 5 + 'px';
 wordBackground.style.marginLeft = 45+'px';
 
 wish.style.marginLeft = document.documentElement.clientWidth * 0.15 + 'px';
@@ -76,8 +76,7 @@ function leftTimer(year, month, day, hour, minute, second) {
     hours = checkTime(hours);
     minutes = checkTime(minutes);
     seconds = checkTime(seconds);
-    // setInterval("leftTimer(2017,10,28,0,0,0)",1000); 
-    timer.innerHTML = "From 18 To 19&nbsp;:<br>(&nbsp;" + days + " days&nbsp;&nbsp;&nbsp;" + hours + " hours&nbsp;&nbsp;&nbsp;" + minutes + " minutes&nbsp;&nbsp;&nbsp;" + seconds + " seconds&nbsp;)";
+    timer.innerHTML = "From 27 To 28&nbsp;:<br>(&nbsp;" + days + " days&nbsp;&nbsp;&nbsp;" + hours + " hours&nbsp;&nbsp;&nbsp;" + minutes + " minutes&nbsp;&nbsp;&nbsp;" + seconds + " seconds&nbsp;)";
 }
 
 function checkTime(i) { //将0-9的数字前面加上0，例1变为01 
